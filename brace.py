@@ -2,42 +2,33 @@ from turtle import *
 import colorsys as cs
 
 # --- Setup the Screen and Turtle ---
-bgcolor("black")  # Set the background color to black
-pensize(4)        # Set the thickness of the drawing outline
-tracer(100)       # Speed up the drawing animation
+bgcolor("black")   # Change 1: A dark background makes the colors pop
+pensize(2)
+speed(0)           # Change 2: Sets the drawing speed to the fastest possible
+h = 0
 
-# --- Initial variables ---
-h = 0             # Initialize hue value for colors
+# --- Position the turtle ---
+up()
+goto(0, -100)      # Change 3: Start lower to center the final spiral
+down()
 
-# --- Position the turtle to start ---
-up()              # Lift the pen to move without drawing
-goto(40, -10)     # Move to the starting position
-down()            # Put the pen down to start drawing
-
-# --- Main loop to draw the pattern ---
-for i in range(600):
-    # Convert HSV color to RGB color
-    # The hue (h) changes in each loop, while saturation and value are max (1)
+# --- Main loop to draw the colorful spiral ---
+for i in range(300):
     c = cs.hsv_to_rgb(h, 1, 1)
+    pencolor(c)
+    fillcolor(c)
 
-    # Set the colors
-    color('black')    # Set the outline color of the shape
-    fillcolor(c)      # Set the fill color of the shape
+    begin_fill()
+    # Change 4: Draw a different, simple shape (a circle)
+    circle(50)
+    end_fill()
 
-    # Position the turtle for the next shape in a spiral path
+    h += 0.01          # Change 5: Adjusts the speed of the color change
+
+    # Change 6: Move for the next shape in a tighter spiral
     up()
-    circle(i, 60)
+    circle(i, 25)
     down()
 
-    # Draw and fill one of the leaf-like shapes
-    begin_fill()
-    circle(40, 145)
-    left(10)
-    circle(40, 145)
-    end_fill()        # This command completes the shape filling
-
-    # Increment the hue to change the color for the next shape
-    h += 0.005
-
 # --- Keep the window open ---
-done()           
+done()
