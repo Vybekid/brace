@@ -1,19 +1,17 @@
 from turtle import *
 import colorsys as cs
 
-# --- Setup the Screen and Turtle ---
-bgcolor("black")   # Change 1: A dark background makes the colors pop
+bgcolor("black")  
 pensize(2)
-speed(0)           # Change 2: Sets the drawing speed to the fastest possible
+speed(-2)         
 h = 0
 
-# --- Position the turtle ---
 up()
-goto(0, -100)      # Change 3: Start lower to center the final spiral
+goto(0, -100)  
 down()
 
 # --- Main loop to draw the colorful spiral ---
-for i in range(300):
+for i in range(250):
     c = cs.hsv_to_rgb(h, 1, 1)
     pencolor(c)
     fillcolor(c)
